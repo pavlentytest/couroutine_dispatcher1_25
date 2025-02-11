@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
@@ -34,6 +35,7 @@ class MainActivity : AppCompatActivity() {
             }
         }*/
         CoroutineScope(Dispatchers.Main).launch {
+            // Thread.sleep(20000) <- так лучше не надо
             delay(30000)
             val firstDeffered = async(Dispatchers.IO) { getImage() }
             val bitmap = firstDeffered.await()
